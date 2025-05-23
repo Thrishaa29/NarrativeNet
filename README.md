@@ -1,7 +1,7 @@
 # 📚 NarrativeNet
 
 **NarrativeNet** is an AI-powered novel generation and narration app built with Streamlit. Users can generate stories by selecting a genre and providing a prompt, then read or listen to the story chapter by chapter.
-
+Access the deployed app here https://narattivenet.streamlit.app/
 ---
 
 ## 🚀 Features
