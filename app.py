@@ -36,7 +36,7 @@ else:
     </style>
     """, unsafe_allow_html=True)
 
-st.title("📚 NarrativeNet: AI-Driven Novel Generation and Narration")
+st.title("📚 NarrativeNet: AI-Driven Novel Generation ")
 
 # Add an intro message
 st.markdown("""
@@ -75,8 +75,7 @@ user_prompt = st.text_input(
 # Chapter length selector - REDUCED max for faster generation
 chapter_count = st.slider("Number of Chapters", min_value=2, max_value=5, value=3)
 
-# Text-to-speech option
-enable_tts = st.checkbox("Enable Text-to-Speech for Chapter Reading", value=False)
+
 
 import os  # Make sure this is at the top of your file
 
@@ -117,12 +116,7 @@ def display_novel(novel_text, current_idx, enable_tts):
     current_chapter = chapters[current_idx]
     st.markdown(current_chapter, unsafe_allow_html=True)
 
-    # ✅ Text-to-Speech
-    audio_path = speak(chapter_text)
-    if audio_path:
-        st.audio(audio_path, format="audio/wav")
-    else:
-        st.warning("Could not generate audio.")
+   
 
 def generate_button_callback():
     st.session_state.generating = True
