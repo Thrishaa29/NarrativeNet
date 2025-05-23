@@ -4,8 +4,9 @@ from dotenv import load_dotenv
 from huggingface_hub import InferenceClient
 
 # ✅ Load your Hugging Face key from .env
-load_dotenv()
-hf_token = os.getenv("HF_API_KEY")
+import streamlit as st
+hf_token = st.secrets["HF_API_KEY"]
+
 
 # ✅ Initialize Hugging Face Nebius Inference Client
 client = InferenceClient(
