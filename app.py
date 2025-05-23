@@ -1,6 +1,6 @@
 
 import streamlit as st
-
+from tts import speak
 # ✅ FIRST Streamlit command
 st.set_page_config(page_title="Novel Generator", layout="wide")
 from story_generator import generate_novel_cached, split_into_chapters
@@ -118,20 +118,11 @@ def display_novel(novel_text, current_idx, enable_tts):
     st.markdown(current_chapter, unsafe_allow_html=True)
 
     # ✅ Text-to-Speech
-    if enable_tts:
-        chapter_lines = current_chapter.split('\n')
-        chapter_text = '\n'.join([line for line in chapter_lines if not line.startswith('#')])
-        if st.button("🔊 Read Chapter Aloud", key=f"read_{current_idx}"):
-            try:
-                from tts import speak  # Import inside to avoid circular issues
-                audio_path = speak(chapter_text)
-                if audio_path and os.path.exists(audio_path):
-                    st.audio(audio_path, format="audio/wav")
-                else:
-                    st.warning("Could not generate audio.")
-            except Exception as e:
-                st.warning(f"Text-to-speech unavailable: {e}")
-
+    audio_path = speak(chapter_text)
+    if audio_path:
+        st.audio(audio_path, format="audio/wav")
+    else:
+        st.warning("Could not generate audio.")
 
 def generate_button_callback():
     st.session_state.generating = True
