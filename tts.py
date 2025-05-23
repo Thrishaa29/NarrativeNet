@@ -4,7 +4,7 @@ import tempfile
 
 def speak(text):
     try:
-        API_URL = "https://api-inference.huggingface.co/models/espnet/kan-bayashi_ljspeech_vits"
+        API_URL = "https://api-inference.huggingface.co/models/facebook/fastspeech2-en-ljspeech"
         headers = {"Authorization": f"Bearer {st.secrets['HF_API_KEY']}"}
 
         st.info("Sending request to TTS model...")
