@@ -4,9 +4,8 @@ from dotenv import load_dotenv
 from huggingface_hub import InferenceClient
 
 # ✅ Load your Hugging Face key from .env
-import streamlit as st
-hf_token = st.secrets["HF_API_KEY"]
-
+load_dotenv()
+hf_token = os.getenv("HF_API_KEY")
 
 # ✅ Initialize Hugging Face Nebius Inference Client
 client = InferenceClient(
@@ -68,3 +67,4 @@ def split_into_chapters(novel_text):
         chapters.append(current_chapter.strip())
 
     return chapters
+
