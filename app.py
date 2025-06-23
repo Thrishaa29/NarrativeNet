@@ -53,17 +53,11 @@ user_prompt = st.text_input("Your Novel Beginning (optional)", placeholder="Ente
 
 chapter_count = st.slider("Number of Chapters", min_value=2, max_value=5, value=3)
 
-enable_tts = st.toggle("🔊 Enable Voice Narration", value=False)
+# Text-to-speech option
+enable_tts = st.checkbox("Enable Text-to-Speech for Chapter Reading", value=False)
 
-# ---------- Generate Novel Callback ----------
-def generate_button_callback():
-    st.session_state.generating = True
-    st.session_state.novel = None
-    st.session_state.current_chapter = 0
+import os  # Make sure this is at the top of your file
 
-generate_btn = st.button("✨ Generate Novel", on_click=generate_button_callback)
-
-# ---------- Novel Display ----------
 def display_novel(novel_text, current_idx, enable_tts=False):
     if novel_text.startswith("Error"):
         st.error(novel_text)
