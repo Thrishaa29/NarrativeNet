@@ -79,7 +79,7 @@ chapter_count = st.slider("Number of Chapters", min_value=2, max_value=5, value=
 
 import os  # Make sure this is at the top of your file
 
-def display_novel(novel_text, current_idx):
+def display_novel(novel_text, current_idx, enable_tts=False):
     if novel_text.startswith("Error"):
         st.error(novel_text)
         return
