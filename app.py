@@ -155,7 +155,7 @@ if st.session_state.generating:
 
 # Display novel if available
 if not st.session_state.generating and st.session_state.novel:
-    display_novel(st.session_state.novel, st.session_state.current_chapter, enable_tts)
+    display_novel(st.session_state.novel, st.session_state.current_chapter)
 
 
     
